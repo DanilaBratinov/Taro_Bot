@@ -74,8 +74,6 @@ def send_message(message):
             bot.send_photo(chatID, photo, caption=descr.magician, parse_mode="Markdown")
 
         case "Жрица":
-            photo = open('card/img/high_priestess.jpg', 'rb')
-            bot.send_photo(chatID, photo, caption=descr.high_priestess, parse_mode="Markdown")
             bot.send_message(chatID, descr.high_priestess, parse_mode="Markdown")
 
         
