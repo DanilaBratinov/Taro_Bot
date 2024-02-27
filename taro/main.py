@@ -77,7 +77,7 @@ def send_message(message):
 
         case "Магия 🔮":
             bot.delete_message(message.chat.id, message.message_id)
-            bot.send_message(chatID, "Сиди и думай, что написать дальше!")
+            bot.send_message(chatID, "Сиди и думай, что написать дальше! Уже много времени прошло!")
 
         
 
