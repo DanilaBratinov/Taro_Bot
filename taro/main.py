@@ -72,7 +72,8 @@ def send_message(message):
         case "Маг":
             photo = open('card/img/magician.jpg', 'rb')
             bot.send_photo(chatID, photo, caption=descr.magician, parse_mode="Markdown")
-
+        case "Немаг":
+            bot.send_message(chatID, "Работает!")
         
 
 
