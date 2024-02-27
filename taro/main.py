@@ -12,7 +12,6 @@ bot = telebot.TeleBot(token)
 remove_keyboard = telebot.types.ReplyKeyboardRemove()
 
 # Старт
-
 @bot.message_handler(commands=['start'])
 def start_message(message):
     chatID = message.chat.id
@@ -61,20 +60,24 @@ def send_message(message):
             sleep(1)
             bot.send_message(chatID, "Как его зовут ?")
             bot.register_next_step_handler(message, get_partner_name)
+
+        case "Показать карты":
+            photo = open('taro/card/img/fool.jpg', 'rb')
+            bot.send_photo(chatID, photo, caption=descr.fool, parse_mode="Markdown")
+            
+            bot.send_chat_action(chatID, 'typing')
+            sleep(1)
+            photo = open('taro/card/img/magician.jpg', 'rb')
+            bot.send_photo(chatID, photo, caption=descr.magician, parse_mode="Markdown")
+
+            bot.send_chat_action(chatID, 'typing')
+            sleep(1)
+            photo = open('taro/card/img/priestess.jpg', 'rb')
+            bot.send_photo(chatID, photo, caption=descr.priestess, parse_mode="Markdown")
+
         case "Магия 🔮":
             bot.delete_message(message.chat.id, message.message_id)
             bot.send_message(chatID, "Сиди и думай, что написать дальше!")
-
-        case "Дурак":
-            photo = open('card/img/fool.jpg', 'rb')
-            bot.send_photo(chatID, photo, caption=descr.fool, parse_mode="Markdown")
-
-        case "Маг":
-            photo = open('card/img/magician.jpg', 'rb')
-            bot.send_photo(chatID, photo, caption=descr.magician, parse_mode="Markdown")
-
-        case "Жрица":
-            bot.send_message(chatID, "Прекрасное имя, полное волшебства!")
 
         
 
@@ -128,8 +131,10 @@ def get_genus(message):
     item2 = types.KeyboardButton('Будующее 🔮')
     item3 = types.KeyboardButton('Карта дня ☀️')
     item4 = types.KeyboardButton('Финансовое благополучие 💰')
+    item5 = types.KeyboardButton('Показать карты')
 
-    markup.add(item1, item2, item3, item4)
+
+    markup.add(item1, item2, item3, item4, item5)
 
     match message.text:
         case '👨':
