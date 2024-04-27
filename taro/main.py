@@ -62,17 +62,17 @@ def send_message(message):
             bot.register_next_step_handler(message, get_partner_name)
 
         case "Показать карты":
-            photo = open('card/img/fool.jpg', 'rb')
+            photo = open('taro/card/img/fool.jpg', 'rb')
             bot.send_photo(chatID, photo, caption=descr.fool, parse_mode="Markdown")
             
             bot.send_chat_action(chatID, 'typing')
             sleep(1)
-            photo = open('card/img/magician.jpg', 'rb')
+            photo = open('taro/card/img/magician.jpg')
             bot.send_photo(chatID, photo, caption=descr.magician, parse_mode="Markdown")
 
             bot.send_chat_action(chatID, 'typing')
             sleep(1)
-            photo = open('card/img/priestess.jpg', 'rb')
+            photo = open('taro/card/img/priestess.jpg', 'rb')
             bot.send_photo(chatID, photo, caption=descr.priestess, parse_mode="Markdown")
 
         case "Магия 🔮":
