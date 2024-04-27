@@ -1,9 +1,7 @@
-FROM ubuntu
-RUN apt update -y && apt upgrade -y && apt install -y python3 pip
-RUN pip3 install telebot pendulum pymysql bs4 cryptography
+FROM python:3.10.14
 
-COPY ./taro ./bot
-WORKDIR /bot
+RUN pip install telebot
+COPY taro/ .
 
 ENTRYPOINT ["python3"]
-
+CMD ["main.py"]
